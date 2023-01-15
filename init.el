@@ -1,6 +1,5 @@
-;;
-;; init.el
-;; 
+;; Start emacs on maximzed frame.
+(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
 
 ;; set shell path for macosx
 (when (memq window-system '(mac ns x))
@@ -18,6 +17,16 @@
       (package-install 'use-package)))
 (require 'use-package)
 
+;; Theme
+(use-package gruvbox-theme
+  :ensure t
+  :config
+  (load-theme 'gruvbox-dark-soft t))
+
+;; line number
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+;; autopair
 
 
 ;; lsp-mode
@@ -55,7 +64,9 @@
 
 ;; flycheck
 (use-package flycheck
-  :ensure t)
+  :ensure t
+  :config
+  (global-flycheck-mode))
 
 
 ;; go-mode
