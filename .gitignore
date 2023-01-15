@@ -5,3 +5,4 @@ auto-save-list
 *.tgz*
 *~
 *.DS_Store
+elpa
