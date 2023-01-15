@@ -1,3 +1,0 @@
-[submodule "magit"]
-	path = /Users/kimminkyoo/.emacs.d/site-lisp/magit
-	url = https://github.com/magit/magit.git
