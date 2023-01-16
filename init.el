@@ -43,18 +43,32 @@
   )
 
 
+;; for key bindings...
+;; which-key
+(use-package which-key
+  :ensure t
+  :config
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 10000)
+  (setq which-key-idle-secondary-delay 0.05)
+  (setq which-key-popup-type 'minibuffer)
+  (which-key-mode))
+
 ;; lsp-mode
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-mode lsp-deferred)
+  :init
+
   :hook (go-mode . lsp-deferred)
   :config (progn
-	    (setq lsp-prefer-flymake nil)))
+	    (setq lsp-prefer-flymake nil))
+  (lsp-enable-which-key-integration t))
 
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode
-    :config (progn
+  :config (progn
             (setq lsp-ui-sideline-enable nil)
             (setq lsp-ui-doc-enable nil)))
 
@@ -90,9 +104,13 @@
     (lsp-organize-imports)
     (lsp-format-buffer)))
 
+
+
 (use-package go-mode
   :ensure t
-  :hook (before-save . golang-before-save))
+  :init
+  :hook
+  (before-save . golang-before-save))
 
 
 
@@ -106,7 +124,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(aggressive-indent exec-path-from-shell magit)))
+ '(package-selected-packages '(which-key aggressive-indent exec-path-from-shell magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
