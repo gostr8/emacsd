@@ -19,6 +19,8 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; smart-compile.el from zenitani (https://github.com/zenitani/elisp)
+(load "~/.emacs.d/smart-compile.el")
 
 ;; for use-package...
 (if (not (package-installed-p 'use-package))
