@@ -67,11 +67,12 @@
 ;; lsp-mode
 (use-package lsp-mode
   :ensure t
-  :commands (lsp lsp-mode lsp-deferred lsp-ui-mode)
+  :commands (lsp lsp-mode lsp-deferred)
   :init
 
   :hook
-  ((go-mode . lsp-deferred) (python-mode . lsp))
+  (go-mode . lsp-)
+  
   :config (progn
 	    (setq lsp-prefer-flymake nil))
   (lsp-enable-which-key-integration t))
